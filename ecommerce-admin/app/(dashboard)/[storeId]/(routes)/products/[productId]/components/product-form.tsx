@@ -1,7 +1,7 @@
 "use client"
 
 import { AlertModal } from "@/components/modals/alert-modal";
-import { SelectField } from "@/components/select-field";
+import { SelectField } from "@/components/ui/select-field";
 import { ApiAlert } from "@/components/ui/api-alert";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -36,6 +36,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from "zod"
+import { CheckboxField } from "@/components/ui/checkbox-field";
 
 interface ProductFormProps {
     initialData: Product & {
@@ -232,54 +233,18 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         placeholder="Select color"
                         data={colors}
                      />
-                      <FormField 
+                     <CheckboxField 
                         control={form.control}
                         name="isFeatured"
-                        render={({ field }) => (
-                            <FormItem 
-                                className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"
-                            >
-                              <FormControl>
-                                <Checkbox 
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                    Featured
-                                </FormLabel>
-                                <FormDescription>
-                                    This product will appear on the home page.
-                                </FormDescription>
-                              </div>
-                            </FormItem>
-                        )}
-                    />
-                     <FormField 
+                        label="Featured"
+                        description="This product will appear on the home page."
+                     />
+                     <CheckboxField 
                         control={form.control}
                         name="isArchived"
-                        render={({ field }) => (
-                            <FormItem 
-                                className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"
-                            >
-                              <FormControl>
-                                <Checkbox 
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                    Archived
-                                </FormLabel>
-                                <FormDescription>
-                                    This product will not appear anywhere in the store.
-                                </FormDescription>
-                              </div>
-                            </FormItem>
-                        )}
-                    />
+                        label="Archived"
+                        description="This product will not appear anywhere in the store."
+                     />
                 </div>
                 <Button 
                     disabled={loading}

@@ -1,8 +1,7 @@
 "use client"
 
 import { AlertModal } from "@/components/modals/alert-modal";
-import { SelectField } from "@/components/select-field";
-import { ApiAlert } from "@/components/ui/api-alert";
+import { SelectField } from "@/components/ui/select-field";
 import { Button } from "@/components/ui/button";
 import { 
     Form, 
@@ -148,7 +147,8 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboar
                             </FormItem>
                         )}
                     />
-                    <SelectField 
+                    <SelectField
+                        label="Color" 
                         control={form.control}
                         name="billboardId"
                         disabled={loading}
