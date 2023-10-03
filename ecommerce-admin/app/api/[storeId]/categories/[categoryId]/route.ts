@@ -46,7 +46,7 @@ export async function PATCH(
         }
 
         if (!params.categoryId) {
-            return new NextResponse('Billboard ID is required', { status: 400 })
+            return new NextResponse('Category ID is required', { status: 400 })
         }
 
         const storeByUserId = await prismadb.store.findFirst({

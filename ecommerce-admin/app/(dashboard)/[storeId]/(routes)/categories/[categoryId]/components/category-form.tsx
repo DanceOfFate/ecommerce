@@ -1,6 +1,7 @@
 "use client"
 
 import { AlertModal } from "@/components/modals/alert-modal";
+import { SelectField } from "@/components/select-field";
 import { ApiAlert } from "@/components/ui/api-alert";
 import { Button } from "@/components/ui/button";
 import { 
@@ -147,43 +148,13 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboar
                             </FormItem>
                         )}
                     />
-                     <FormField 
+                    <SelectField 
                         control={form.control}
                         name="billboardId"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Billboard</FormLabel>
-                                <FormControl>
-                                    <Select 
-                                        disabled={loading}
-                                        onValueChange={field.onChange}
-                                        value={field.value}
-                                        defaultValue={field.value}
-                                    >
-                                        <FormControl>
-                                            <SelectTrigger>
-                                                <SelectValue 
-                                                    defaultValue={field.value}
-                                                    placeholder="Select a billboard"
-                                                />
-                                            </SelectTrigger>
-                                        </FormControl>
-                                        <SelectContent>
-                                            {billboards.map((billboard) => (
-                                                <SelectItem
-                                                    key={billboard.id}
-                                                    value={billboard.id}
-                                                >
-                                                    {billboard.label}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                               <FormMessage /> 
-                            </FormItem>
-                        )}
-                    />
+                        disabled={loading}
+                        placeholder="Select a billboard"
+                        data={billboards}
+                     />
                 </div>
                 <Button 
                     disabled={loading}
